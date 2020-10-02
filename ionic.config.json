@@ -1,0 +1,7 @@
+{
+  "name": "thibauxs-boat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
