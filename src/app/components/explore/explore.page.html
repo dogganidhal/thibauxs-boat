@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-back-button></ion-back-button>
+  <ion-toolbar>
+    <ion-title>
+      Explorer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Nous contacter</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="selectedTab" (ionChange)="onSegmentChanged($event)">
+      <ion-segment-button value=0>
+        <ion-icon name="pizza-outline"></ion-icon>
+        <ion-label>Recettes</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value=1>
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <ion-label>Restaurants</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value=2>
+        <ion-icon name="boat-outline"></ion-icon>
+        <ion-label>Bâteaux</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="selectedTab">
+    <app-recipes *ngSwitchCase=0></app-recipes>
+    <app-restaurants *ngSwitchCase=1></app-restaurants>
+    <app-boats *ngSwitchCase=2></app-boats>
+  </div>
+
+</ion-content>
