@@ -3,6 +3,7 @@ import {ShopService} from '../../domain/service/shop/shop.service';
 import Product from '../../domain/model/Product';
 import {ActivatedRoute} from '@angular/router';
 import GraphQLResponse from '../../domain/model/GraphQLResponse';
+import {CartService} from '../../domain/service/cart/cart.service';
 
 
 @Component({
@@ -21,7 +22,11 @@ export class ProductComponent {
     speed: 400
   };
 
-  constructor(private shopService: ShopService, activatedRoute: ActivatedRoute) {
+  constructor(
+    private shopService: ShopService,
+    private cartService: CartService,
+    activatedRoute: ActivatedRoute
+  ) {
     activatedRoute
       .params
       .subscribe(params => {
@@ -34,6 +39,10 @@ export class ProductComponent {
             this.error = error;
           });
       });
+  }
+
+  addToCart() {
+    this.cartService.addToCart(this.product);
   }
 
 }

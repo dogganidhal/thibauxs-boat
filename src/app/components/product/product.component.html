@@ -24,7 +24,7 @@
                 <ion-label class="product-category-label">{{ product.category.name }}</ion-label>
             </ion-card-subtitle>
             <ion-row class="add-to-cart-button ion-justify-content-center">
-                <ion-button>
+                <ion-button (click)="addToCart()">
                     Ajouter au panier
                 </ion-button>
             </ion-row>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CartService} from '../../domain/service/cart/cart.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  cartItemCount = 0;
+
+  constructor(private cartService: CartService) {
+    cartService
+      .items
+      .subscribe(items => this.cartItemCount = items.length);
+  }
 
 }
