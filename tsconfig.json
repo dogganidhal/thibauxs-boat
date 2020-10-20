@@ -13,11 +13,14 @@
     "target": "es2015",
     "lib": [
       "es2018",
-      "dom"
+      "es2017",
+      "dom",
+      "esnext.asynciterable"
     ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "allowSyntheticDefaultImports": true
   }
 }

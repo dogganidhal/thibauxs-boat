@@ -1,0 +1,39 @@
+
+.product-category-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.product-category-icon {
+  height: 2em;
+  width: 2em;
+  object-fit: contain;
+}
+
+.product-category-container > .product-category-icon {
+  margin-right: 0.5em;
+}
+
+.product-category-label {
+  display: flex;
+}
+
+.product-grid {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.product-card {
+
+}
+
+
+.product-image {
+  width: 15em;
+  object-fit: contain;
+  display: flex;
+  place-self: center;
+}

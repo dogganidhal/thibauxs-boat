@@ -1,19 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Shop
-    </ion-title>
+    <ion-searchbar animated debounce="200" placeholder="Chercher un produit..." [formControl]="searchFormControl"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Shop</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <p>
-    shop works!
-  </p>
+  <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+  <app-category-select
+    (categorySelected)="onCategoriesSelected($event)">
+  </app-category-select>
+  <ion-grid class="product-grid">
+    <ion-card class="product-card" *ngFor="let product of products">
+      <ion-row class="ion-justify-content-center">
+        <img class="product-image" src="{{ product.assets[0].url }}" alt="{{ product.name }}'s image">
+      </ion-row>
+      <ion-card-header>
+        <ion-row class="ion-justify-content-between">
+          <ion-card-title>{{ product.name }}</ion-card-title>
+          <ion-card-title>{{ product.price }}€</ion-card-title>
+        </ion-row>
+        <ion-card-subtitle class="product-category-container">
+          <img class="product-category-icon" src="{{ product.category.iconUrl }}" alt="{{ product.category.name }}"/>
+          <ion-label class="product-category-label">{{ product.category.name }}</ion-label>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        {{ truncateDescription(product.comment) }}
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
 </ion-content>

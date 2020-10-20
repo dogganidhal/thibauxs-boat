@@ -1,0 +1,27 @@
+.product-category-grid {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-category-card {
+  display: flex;
+  flex-direction: column;
+  justify-items: baseline;
+  padding: 1em;
+  width: 10em;
+  align-items: center;
+}
+
+.product-category-card-selected {
+  background-color: var(--ion-color-primary);
+}
+
+.product-category-icon {
+  height: 2em;
+  width: 2em;
+  object-fit: contain;
+}
+
+.product-category-card > .product-category-icon {
+  margin: 1em;
+}
