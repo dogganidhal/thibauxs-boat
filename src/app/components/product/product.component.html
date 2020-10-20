@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-row>
+            <ion-back-button></ion-back-button>
+            <ion-title size="large">{{ product?.name || "Chargement ..." }}</ion-title>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+    <div *ngIf="product !== undefined">
+        <div class="product-container">
+            <ion-slides pager [options]="slideOptions">
+                <ion-slide *ngFor="let asset of product.assets">
+                    <img class="product-image" src="{{ asset.url }}" alt="{{ product.name }}'s image"/>
+                </ion-slide>
+            </ion-slides>
+            <ion-row class="ion-justify-content-between">
+                <ion-card-title>{{ product.name }}</ion-card-title>
+                <ion-card-title>{{ product.price }}€</ion-card-title>
+            </ion-row>
+            <ion-card-subtitle class="product-category-container">
+                <img class="product-category-icon" src="{{ product.category.iconUrl }}" alt="{{ product.category.name }}"/>
+                <ion-label class="product-category-label">{{ product.category.name }}</ion-label>
+            </ion-card-subtitle>
+            <ion-row class="add-to-cart-button ion-justify-content-center">
+                <ion-button>
+                    Ajouter au panier
+                </ion-button>
+            </ion-row>
+            <ion-card-content>
+                {{ product.comment }}
+            </ion-card-content>
+        </div>
+    </div>
+</ion-content>

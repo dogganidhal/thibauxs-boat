@@ -10,7 +10,10 @@
     (categorySelected)="onCategoriesSelected($event)">
   </app-category-select>
   <ion-grid class="product-grid">
-    <ion-card class="product-card" *ngFor="let product of products">
+    <ion-card
+            class="product-card"
+            *ngFor="let product of products"
+            [routerLink]="'product/' + product.id">
       <ion-row class="ion-justify-content-center">
         <img class="product-image" src="{{ product.assets[0].url }}" alt="{{ product.name }}'s image">
       </ion-row>

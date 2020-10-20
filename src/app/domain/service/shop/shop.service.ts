@@ -60,4 +60,19 @@ export class ShopService {
       }));
   }
 
+  productById(id: string): Observable<GraphQLResponse<Product>> {
+    return this.apollo
+      .watchQuery<{ products: Product[] }>({
+        query: Query.productById(id)
+      })
+      .valueChanges
+      .pipe(map(response => {
+        return {
+          loading: response.loading,
+          error: response.error,
+          data: response.data.products[0]
+        };
+      }));
+  }
+
 }

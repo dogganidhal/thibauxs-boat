@@ -99,7 +99,35 @@ const Query = {
                 }
             }
         `
-    }
+    },
+    productById: (id: string) => gql`
+        query {
+            products: product(where: {id: {_eq: "${id}"}}) {
+                id
+                name
+                onSale: on_sale
+                discount
+                comment
+                price
+                unit
+                available
+                category {
+                    id
+                    name
+                    iconUrl: icon_url
+                }
+                assets {
+                    id
+                    url
+                }
+                owner {
+                    id
+                    lastName: last_name
+                    firstName: first_name
+                }
+            }
+        }
+    `
 };
 
 

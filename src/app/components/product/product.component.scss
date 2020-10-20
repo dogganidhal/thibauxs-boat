@@ -1,0 +1,34 @@
+
+ion-slides {
+  height: 100%;
+}
+
+.product-container {
+  width: 100%;
+  padding: 0.5em;
+}
+
+.product-image {
+  padding: 0.5em;
+}
+
+.add-to-cart-button {
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+}
+
+.product-category-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.product-category-icon {
+  height: 2em;
+  width: 2em;
+  object-fit: contain;
+}
+
+.product-category-container > .product-category-icon {
+  margin-right: 0.5em;
+}

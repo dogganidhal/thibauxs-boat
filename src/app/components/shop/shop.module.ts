@@ -7,6 +7,7 @@ import { ShopPage } from './shop.page';
 import { ShopPageRoutingModule } from './shop-routing.module';
 import {NbInputModule} from '@nebular/theme';
 import {CategorySelectModule} from '../category-select/category-select.module';
+import {ProductModule} from '../product/product.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {CategorySelectModule} from '../category-select/category-select.module';
     ShopPageRoutingModule,
     NbInputModule,
     ReactiveFormsModule,
-    CategorySelectModule
+    CategorySelectModule,
+    ProductModule
   ],
   declarations: [ShopPage]
 })
