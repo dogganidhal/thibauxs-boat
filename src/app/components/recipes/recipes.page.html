@@ -5,7 +5,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <p>
-    recipes works!
-  </p>
+  <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+  <ion-list *ngIf="recipes.length > 0">
+    <ion-card *ngFor="let recipe of recipes" [routerLink]="['recipe', recipe.id]">
+      <ion-card-header>
+        <img src="{{ recipe.assetUrl }}" alt="{{ recipe.name }}'s photo">
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card-title>{{ recipe.name }}</ion-card-title>
+        <ion-row class="ion-align-items-center">
+          <ion-icon class="preparation-time-icon" name="time"></ion-icon>
+          <ion-card-subtitle>{{ formatPreparationTime(recipe.preparationTime) }}</ion-card-subtitle>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-back-button></ion-back-button>
+      <ion-title size="large">{{ recipe ? recipe.name : 'Chargement ...' }}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+  <img src="{{ recipe.assetUrl }}" alt="{{ recipe.name }} photo">
+  <ion-card-content>
+    <ion-card-title>{{ recipe.name }}</ion-card-title>
+    <ion-card-subtitle>{{ formatPreparationTime(recipe.preparationTime) }}</ion-card-subtitle>
+  </ion-card-content>
+</ion-content>

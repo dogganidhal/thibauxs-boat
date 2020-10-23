@@ -1,9 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {ShopService} from '../../domain/service/shop/shop.service';
 import Product from '../../domain/model/Product';
 import {FormControl} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
-import ProductCategory from '../../domain/model/ProductCategory';
 import GraphQLResponse from '../../domain/model/GraphQLResponse';
 
 

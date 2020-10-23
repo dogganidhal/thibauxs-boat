@@ -1,9 +1,12 @@
 <ion-header [translucent]="true">
   <ion-back-button></ion-back-button>
   <ion-toolbar>
-    <ion-title>
-      Panier
-    </ion-title>
+    <ion-row>
+      <ion-title>
+        Panier
+      </ion-title>
+      <ion-button *ngIf="items.length > 0" (click)="resetCart()">Vider</ion-button>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +17,38 @@
     </ion-toolbar>
   </ion-header>
 
-  <p>
-    cart works!
-  </p>
+  <div style="height: 100%; display: flex;" class="ion-align-items-center ion-justify-content-center" *ngIf="items.length === 0">
+    <ion-col style="display: flex; flex-direction: column" class="ion-align-items-center ion-justify-content-center">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_nl9M_exbaJFJv0tsRcn4LxCm-agS6G-Ehg&usqp=CAU"/>
+      <ion-card-title>Panier vide</ion-card-title>
+    </ion-col>
+  </div>
+  <div class="cart-container" *ngIf="items.length > 0">
+    <ion-row class="ion-justify-content-between ion-align-items-center">
+      <ion-card-title>Total : {{ totalPrice }}€</ion-card-title>
+      <ion-button>Passer la commande</ion-button>
+    </ion-row>
+    <ion-list>
+      <ion-card class="cart-item" *ngFor="let item of items">
+        <ion-card-header>
+          <ion-row class="ion-justify-content-center">
+            <img class="product-image" src="{{ item.product.assets[0].url }}"/>
+          </ion-row>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row class="ion-justify-content-between ion-align-items-center">
+            <ion-card-title>
+              {{ item.product.name }}
+            </ion-card-title>
+            <ion-row class="ion-justify-content-center">
+              <ion-button (click)="decrement(item)">-</ion-button>
+              <ion-text class="cart-item-quantity-label">{{ item.quantity }}</ion-text>
+              <ion-button (click)="increment(item)">+</ion-button>
+            </ion-row>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
 
 </ion-content>

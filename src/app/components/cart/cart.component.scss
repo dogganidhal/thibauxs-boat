@@ -1,0 +1,17 @@
+
+.product-image {
+  width: 15em;
+  object-fit: contain;
+  display: flex;
+  place-self: center;
+}
+
+.cart-container {
+  width: 100%;
+  padding: 1em;
+}
+
+
+.cart-item-quantity-label {
+  margin: 1em;
+}

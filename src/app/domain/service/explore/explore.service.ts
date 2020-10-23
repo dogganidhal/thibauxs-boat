@@ -1,69 +1,39 @@
 import { Injectable } from '@angular/core';
 import {Apollo} from 'apollo-angular';
-import Product from '../../model/Product';
 import Query from '../../gql/Query';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import GraphQLResponse from '../../model/GraphQLResponse';
-import ProductCategory from '../../model/ProductCategory';
+import {FullRestaurant, LightRestaurant} from '../../model/Restaurant';
+import {Recipe} from '../../model/Recipe';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShopService {
+export class ExploreService {
 
   constructor(private apollo: Apollo) { }
 
-  productList(): Observable<GraphQLResponse<Product[]>> {
+  listRestaurants(): Observable<GraphQLResponse<LightRestaurant[]>> {
     return this.apollo
-      .watchQuery<{ products: Product[] }>({
-        query: Query.Products.listProducts
+      .watchQuery<{ restaurants: LightRestaurant[] }>({
+        query: Query.Restaurants.listRestaurants
       })
       .valueChanges
       .pipe(map(response => {
         return {
           loading: response.loading,
           error: response.error,
-          data: response.data.products
+          data: response.data.restaurants
         };
       }));
   }
 
-  productCategoryList(): Observable<GraphQLResponse<ProductCategory[]>> {
+  restaurantById(id: string): Observable<GraphQLResponse<FullRestaurant>> {
     return this.apollo
-      .watchQuery<{ categories: ProductCategory[] }>({
-        query: Query.Products.listProductCategories
-      })
-      .valueChanges
-      .pipe(map(response => {
-        return {
-          loading: response.loading,
-          error: response.error,
-          data: response.data.categories
-        };
-      }));
-  }
-
-  filterProducts(query?: string, categoryIds: string[] = []): Observable<GraphQLResponse<Product[]>> {
-    return this.apollo
-      .watchQuery<{ products: Product[] }>({
-        query: Query.Products.filterProducts(categoryIds, query)
-      })
-      .valueChanges
-      .pipe(map(response => {
-        return {
-          loading: response.loading,
-          error: response.error,
-          data: response.data.products
-        };
-      }));
-  }
-
-  productById(id: string): Observable<GraphQLResponse<Product>> {
-    return this.apollo
-      .watchQuery<{ products: Product[] }>({
-        query: Query.Products.productById(id)
+      .watchQuery<{ products: FullRestaurant[] }>({
+        query: Query.Restaurants.restaurantById(id)
       })
       .valueChanges
       .pipe(map(response => {
@@ -71,6 +41,36 @@ export class ShopService {
           loading: response.loading,
           error: response.error,
           data: response.data.products[0]
+        };
+      }));
+  }
+
+  listRecipes(): Observable<GraphQLResponse<Recipe[]>> {
+    return this.apollo
+      .watchQuery<{ recipes: Recipe[] }>({
+        query: Query.Recipes.listRecipes
+      })
+      .valueChanges
+      .pipe(map(response => {
+        return {
+          loading: response.loading,
+          error: response.error,
+          data: response.data.recipes
+        };
+      }));
+  }
+
+  recipeById(id: string): Observable<GraphQLResponse<Recipe>> {
+    return this.apollo
+      .watchQuery<{ recipes: Recipe[] }>({
+        query: Query.Recipes.recipeById(id)
+      })
+      .valueChanges
+      .pipe(map(response => {
+        return {
+          loading: response.loading,
+          error: response.error,
+          data: response.data.recipes[0]
         };
       }));
   }

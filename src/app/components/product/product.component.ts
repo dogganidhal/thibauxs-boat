@@ -16,10 +16,21 @@ export class ProductComponent {
   product?: Product = undefined;
   error?: any = undefined;
   loading = true;
+  quantity = 1;
+  quantityRange = [
+    ...Array(10)
+      .keys()
+  ].map(key => key + 1);
 
   slideOptions = {
     initialSlide: 0,
     speed: 400
+  };
+
+  quantitySelectOptions = {
+    header: 'Quantité',
+    message: 'Veuillez séléctionner la quantité que vous souhaitez commander',
+    translucent: true
   };
 
   constructor(
@@ -41,8 +52,12 @@ export class ProductComponent {
       });
   }
 
+  selectQuantity(quantity: number) {
+    this.quantity = quantity;
+  }
+
   addToCart() {
-    this.cartService.addToCart(this.product);
+    this.cartService.addToCart(this.product, this.quantity);
   }
 
 }

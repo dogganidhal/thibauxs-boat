@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ExplorePage } from './explore.page';
-import {RouterModule} from '@angular/router';
-import {RecipesPage} from '../recipes/recipes.page';
 import {ExplorePageRoutingModule} from './explore-routing.module';
 import {RecipesModule} from '../recipes/recipes.module';
 import {RestaurantsModule} from '../restaurants/restaurants.module';
 import {BoatsModule} from '../boats/boats.module';
+import {RecipeDetailsModule} from '../recipe-details/recipe-details.module';
+
 
 @NgModule({
   imports: [
@@ -18,6 +18,7 @@ import {BoatsModule} from '../boats/boats.module';
     CommonModule,
     FormsModule,
     ExplorePageRoutingModule,
+    RecipeDetailsModule,
     RecipesModule,
     RestaurantsModule,
     BoatsModule
